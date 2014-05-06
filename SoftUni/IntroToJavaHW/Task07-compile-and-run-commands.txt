@@ -1,0 +1,18 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+C:\Users\......>java -version
+java version "1.8.0_05"
+Java(TM) SE Runtime Environment (build 1.8.0_05-b13)
+Java HotSpot(TM) Client VM (build 25.5-b02, mixed mode, sharing)
+
+C:\Users\......>javac E:\........\GitHub\Java\trunk\SoftUni\IntroToJavaHW\IntroToJavaHW\src\IntroToJavaHW\SumTwoNumbers.
+java
+
+
+C:\Users\......>java -cp .;E:\........\GitHub\Java\trunk\SoftUni\IntroToJavaHW\IntroToJavaHW\src\ IntroToJavaHW.SumTwoNu
+mbers
+Insert first number: 46
+Insert second number: 58.5
+104.5
+
+C:\Users\......>

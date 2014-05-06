@@ -1,0 +1,2 @@
+run cmd
+java -jar "E:\ttittoIT\GitHub\Java\trunk\SoftUni\IntroToJavaHW\IntroToJavaHW\dist\IntroToJavaHW.jar"
