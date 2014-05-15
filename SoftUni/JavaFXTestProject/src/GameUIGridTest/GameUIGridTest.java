@@ -2,12 +2,15 @@ package GameUIGridTest;
 
 //https://community.oracle.com/thread/2386973?tstart=0
 import javafx.application.Application;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
 public class GameUIGridTest extends Application {
@@ -38,16 +41,25 @@ public class GameUIGridTest extends Application {
 
 	private static void styleGrid(GridPane pane) {
 
-		pane.setStyle("-fx-border: 20px solid; -fx-border-color: black;");
-		pane.setMinSize(pane.getScene().getWidth(), pane.getScene().getHeight());
-		pane.setStyle("-fx-background-color: palegreen; -fx-padding: 5; -fx-hgap: 5; -fx-vgap: 5; -fx-alignment: center;");
+		pane.setStyle("-fx-background-color: palegreen; -fx-padding: 5; -fx-hgap: 2; -fx-vgap: 2; -fx-alignment: center;");
 		pane.setGridLinesVisible(true);
 		pane.setSnapToPixel(true);
+
+		ColumnConstraints oneThird = new ColumnConstraints();
+		oneThird.setPercentWidth(100 / 5.0);
+		oneThird.setHalignment(HPos.CENTER);
+		pane.getColumnConstraints().addAll(oneThird, oneThird, oneThird,
+				oneThird);
+		RowConstraints oneHalf = new RowConstraints();
+		oneHalf.setPercentHeight(100 / 5.0);
+		oneHalf.setValignment(VPos.CENTER);
+		pane.getRowConstraints().addAll(oneHalf, oneHalf, oneHalf, oneHalf);
+
 		for (Node node : pane.getChildren()) {
 			if (node instanceof Control) {
 				Control control = (Control) node;
-				control.setMinSize(pane.getScene().getWidth() / 5,
-						pane.getScene().getHeight() / 5);
+				// control.setMinSize(25, 30);
+				control.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 				control.setStyle("-fx-background-color: cornsilk; -fx-alignment: center;");
 			}
 
