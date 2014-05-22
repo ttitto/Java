@@ -2,7 +2,6 @@ package LoopsMethodsClassesHW;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
-import java.util.function.ToDoubleFunction;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -48,7 +46,7 @@ public class Task09SortedProductList {
 
             StringBuilder sb = new StringBuilder();
 
-            Comparator<Product> pr = (p1, p2) -> p1.price.compareTo(p2.price);
+            Comparator<Product> pr = (p1, p2) -> p1.getPrice().compareTo(p2.getPrice());
             products.stream().sorted(pr).forEach(str -> sb.append(str.toString()).append('\n'));
 
             bw.write(sb.toString());

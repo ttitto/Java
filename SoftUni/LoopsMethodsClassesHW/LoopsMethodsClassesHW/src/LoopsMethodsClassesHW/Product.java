@@ -3,8 +3,9 @@ package LoopsMethodsClassesHW;
 import java.math.BigDecimal;
 
 public class Product {
-    String name;
-    BigDecimal price;
+
+    private String name;
+    private BigDecimal price;
 
     public Product(String name, BigDecimal price) {
         this.name = name;
@@ -22,13 +23,14 @@ public class Product {
     public BigDecimal getPrice() {
         return price;
     }
-     public void setPrice(BigDecimal price) {
+
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return String.format( "%.2f %s" ,this.price,this.name);
+        return String.format("%.2f %s", this.price, this.name);
     }
-     
+
 }
