@@ -1,3 +1,1 @@
-1.20 apple
-2.80 milk
-8.50 coffee
+64.10

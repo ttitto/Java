@@ -1,11 +1,11 @@
 package LoopsMethodsClassesHW;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.MathContext;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -24,10 +24,10 @@ public class Task10ProductsOrder {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         HashSet<Product> products = new HashSet<>();
-        Double totalAmount = 0d;
+        BigDecimal totalAmount = BigDecimal.ZERO;
 
         //Read products list from file
-        try (BufferedReader readProducts = new BufferedReader(new FileReader("..\\products1.txt"))) {
+        try (BufferedReader readProducts = new BufferedReader(new FileReader("..\\products2.txt"))) {
             String line = readProducts.readLine();
             while (line != null) {
                 String[] prod = line.split(" ");
@@ -41,22 +41,31 @@ public class Task10ProductsOrder {
         }
 
         //Read orders list from file
-        try (BufferedReader readOrders = new BufferedReader(new FileReader("..\\order1.txt"))) {
+        try (BufferedReader readOrders = new BufferedReader(new FileReader("..\\order2.txt"))) {
             String line = readOrders.readLine();
             while (line != null) {
                 String[] orders = line.split(" ");
 
-                products.stream().filter((prod) -> (prod.getName().equals(orders[1]))).forEach((Product prod) -> {
-                    totalAmount += prod.getPrice().doubleValue() * Double.parseDouble(orders[0]);
-                });
-
+                for (Product prod : products) {
+                    if (prod.getName().equals(orders[1])) {
+                      totalAmount=  totalAmount.add(prod.getPrice().multiply(BigDecimal.valueOf(Double.parseDouble(orders[0]))));
+                    }
+                }
                 line = readOrders.readLine();
             }
         } catch (IOException ex) {
             Logger.getLogger(Task10ProductsOrder.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        System.out.println(totalAmount);
+        //System.out.println(totalAmount);
+        
+        //Write to output file
+        try (BufferedWriter wr=new BufferedWriter(new FileWriter("..\\output.txt"))){
+            wr.write(totalAmount.toString());
+        } catch (IOException ex) {
+            Logger.getLogger(Task10ProductsOrder.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
     }
 
 }
