@@ -2,8 +2,6 @@ package CollectionsHW;
 
 import java.util.Scanner;
 import java.util.TreeMap;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public class Task11MostFrequentWord {
     /*Write a program to find the most frequent word in a text and print it, 
@@ -17,15 +15,31 @@ public class Task11MostFrequentWord {
         Scanner sc = new Scanner(System.in);
         String pattern = "\\W+";
         String input = sc.nextLine();
-        int max = 0;
-
-        for (String string : input.split(pattern)) {
-           
-                int val = words.ceilingEntry(string).getValue();
-                if (max < val + 1) {
-                }
+        int max = 1;
+        String[] inputArr=input.toLowerCase().split(pattern);
+        int val=1;
+        for (String string : inputArr) {
+            
+            if ((words.containsKey(string))) {
+                 val=words.get(string);
+             words.put(string, val+1);
+             if (max<val+1) {
+                max=val+1;
+            }
+            } else{
+                words.put(string, 1);
+            }
             
         }
-words.forEach((k,v)->System.out.println(k));
+        final int m=max;
+        words.forEach((k, v) -> {
+            if (v ==m) {
+                if (v==1) {
+                System.out.printf("%s -> %d time\n",k,v);
+                } else{
+                System.out.printf("%s -> %d times\n",k,v);    
+                }
+            }
+        });
     }
 }
