@@ -32,10 +32,11 @@ public class Task04CrossingSequences {
             System.out.println(spiralStart);
             return;
         }
-        
+
         int counter = 0;
-        while (spiralStart.longValueExact()<1000000
-                || third.longValueExact()<1000000) {
+        int iteration=0;
+        while (spiralStart.longValueExact() <= 1000000
+                || third.longValueExact() <= 1000000) {
             counter++;
             if (fibos.contains(spiralStart)) {
                 System.out.printf("%s\n", spiralStart);
@@ -44,19 +45,25 @@ public class Task04CrossingSequences {
                 System.out.printf("%s\n", third);
                 return;
             } else {
-                if (counter % 3 == 0) {
-                    spiralStart = spiralStart.add(spiralStep).add(spiralStep);
-                    counter++;
-                } else {
-                    spiralStart = spiralStart.add(spiralStep);
-                }
-                spiral.add(spiralStart);
 
-                temp = first;
-                first = second;
-                second = third;
-                third = first.add(second).add(temp);
-                fibos.add(third);
+                if (spiralStart.longValueExact() <= 1000000) {
+                    if (counter % 3 == 0) {
+                        iteration++;
+                        spiralStart = spiralStart.add(spiralStep.multiply(BigInteger.valueOf(iteration)));
+                        counter++;
+                    } else {
+                        spiralStart = spiralStart.add(spiralStep.multiply(BigInteger.valueOf(iteration)));
+                    }
+                    spiral.add(spiralStart);
+                }
+
+                if (third.longValueExact() <= 1000000) {
+                    temp = first;
+                    first = second;
+                    second = third;
+                    third = first.add(second).add(temp);
+                    fibos.add(third);
+                }
             }
         }
         System.out.println("No");
