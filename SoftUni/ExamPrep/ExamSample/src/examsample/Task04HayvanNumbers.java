@@ -51,7 +51,10 @@ public class Task04HayvanNumbers {
         if (hayvans.size() < 1) {
             System.out.println("No");
         } else {
-            hayvans.forEach(h -> System.out.println(h));
+            //hayvans.forEach(h -> System.out.println(h));
+            for (Long hayvanNum : hayvans) {
+                System.out.println(hayvanNum);
+            }
         }
     }
 
