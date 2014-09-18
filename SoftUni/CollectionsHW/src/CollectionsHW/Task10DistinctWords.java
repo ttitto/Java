@@ -15,7 +15,6 @@ public class Task10DistinctWords {
         String pattern = "\\W+";
         TreeSet<String> distinct=new TreeSet<>();
         
-        ;
         for (String string : input.split(pattern)) {
             distinct.add(string.toLowerCase());
         }
