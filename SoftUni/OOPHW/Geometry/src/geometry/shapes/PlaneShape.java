@@ -13,4 +13,9 @@ public abstract class PlaneShape extends Shape implements AreaMeasurable, Perime
     public abstract double getArea();
 
     public abstract double getPerimeter();
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format("Perimeter: %.2f, Area: %.2f", this.getPerimeter(), this.getArea());
+    }
 }

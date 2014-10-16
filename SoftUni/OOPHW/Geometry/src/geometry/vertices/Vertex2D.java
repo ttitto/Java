@@ -12,4 +12,9 @@ public class Vertex2D extends Vertex {
                 + (this.getY() - other.getY()) * (this.getY() - other.getY()));
         return distance;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

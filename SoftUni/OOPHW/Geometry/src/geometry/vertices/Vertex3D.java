@@ -19,16 +19,21 @@ public class Vertex3D extends Vertex {
 
     @Override
     public double getDistanceTo(Vertex other) {
-        
+
         double z = 0;
         if (other instanceof Vertex3D) {
-           z = ((Vertex3D)other).getZ();
+            z = ((Vertex3D) other).getZ();
         }
-        
+
         double distance = (this.getX() + other.getX()) * (this.getX() + other.getX())
                 + (this.getY() + other.getY()) * (this.getY() + other.getY())
                 + (this.getZ() + z) * (this.getZ() + z);
 
         return distance;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("{%.2f %.2f %.2f}", this.getX(), this.getY(), this.getZ());
     }
 }

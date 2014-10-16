@@ -10,7 +10,14 @@ public abstract class SpaceShape extends Shape implements AreaMeasurable, Volume
         this.setVertices(vertices);
     }
 
+    @Override
     public abstract double getArea();
 
+    @Override
     public abstract double getVolume();
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format("Volume: %.2f, Area: %.2f", this.getVolume(), this.getArea());
+    }
 }
