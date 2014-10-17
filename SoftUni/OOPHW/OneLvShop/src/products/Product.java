@@ -63,4 +63,8 @@ public abstract class Product implements Buyable {
         this.ageRestriction = ageRestriction;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s: price: %.2f, quantity: %d", this.getName(), this.getPrice(), this.getQuantity());
+    }
 }

@@ -14,12 +14,17 @@ public class FoodProduct extends Product implements Expirable {
         this.setExpirationDate(expirationDate);
     }
 
+    public FoodProduct(String name, double price, int quantity, AgeRestriction ageRestriction) {
+        super(name, price, quantity, ageRestriction);
+        this.setExpirationDate(null);
+    }
+
     @Override
     public double getPrice() {
         Date now = Date.from(Instant.now());
         long expire = now.getTime() + 1000 * 60 * 60 * 24 * 15;
 
-        if (this.getExpirationDate().getTime() <= expire) {
+        if (this.getExpirationDate() == null || this.getExpirationDate().getTime() <= expire) {
             return 0.7 * this.price;
         } else {
             return this.price;
@@ -28,11 +33,15 @@ public class FoodProduct extends Product implements Expirable {
 
     @Override
     public Date getExpirationDate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.expirationDate;
     }
 
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
     }
 
+    @Override
+    public String toString(){
+        return super.toString() + String.format(", expires on: %s", this.getExpirationDate());
+    }
 }
